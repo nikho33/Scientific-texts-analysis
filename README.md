@@ -1,37 +1,22 @@
-## Welcome to GitHub Pages
+# Scientific text analysis  
 
-You can use the [editor on GitHub](https://github.com/nikho33/Scientific-texts-analysis/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+The project aims to analyse scientific texts through machine learning and big data tools
+  
+Using pyspark framework (https://spark.apache.org/docs/2.2.1/api/python/pyspark.html), we would like to cluster under classes a batch of scientific texts or papers. After clustering the texts by similarities, we would like also to name the classes according to the samples inside the class. 
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Methods
+*... here comes some details on the methods to implement*
 
-### Markdown
+Check LDA (Latent Dirichlet Allocation) method:  
+In natural language processing, latent Dirichlet allocation (LDA) is a generative statistical model that allows sets of observations to be explained by unobserved groups that explain why some parts of the data are similar. For example, if observations are words collected into documents, it posits that each document is a mixture of a small number of topics and that each word's presence is attributable to one of the document's topics. LDA is an example of a topic model. (https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation)
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
-```markdown
-Syntax highlighted code block
+## Data sources
+### General
+https://www.istex.fr/  
+https://arxiv.org/
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/nikho33/Scientific-texts-analysis/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+### Biotech and microfluidic related papers
+Abstracts and keywords from Lab-on-Chip and Nature journals
+https://pubs.rsc.org/en/journals/journalissues/lc?_ga=2.96347164.1406498630.1553624405-1609253475.1553624405#!recentarticles&adv  
+https://www.nature.com/
