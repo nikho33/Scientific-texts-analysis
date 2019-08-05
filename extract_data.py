@@ -10,6 +10,7 @@ from pyspark.sql.functions import *
 from pyspark.sql import functions as F
 
 from PyPDF2 import PdfFileReader
+import PyPDF2
 from tika import parser  ## https://stackoverflow.com/questions/34837707/how-to-extract-text-from-a-pdf-file
 
 import nltk
@@ -32,7 +33,7 @@ from nltk.corpus import stopwords
 print("Hello here")
 # print("Hello ", spark.sparkContext.appName)
 
-date = 2012
+date = 201 #2012
 if date == 2009:
     path = "C:/Users/nicol/Desktop/MicroTAS/MicroTAS2009/Pdf/"
 elif date == 2010:
@@ -62,13 +63,20 @@ print("Number of files to convert : ", nb_files)
 
 
 def get_info(path):
+    error = 0
     with open(path, 'rb') as f:
         pdf = PdfFileReader(f)
-        info = pdf.getDocumentInfo()
-        number_of_pages = pdf.getNumPages()
+        try:
+            info = pdf.getDocumentInfo()
+        except:
+            error = -1
+            info = PyPDF2.pdf.DocumentInformation
+            info.title = None
+            info.author = None
+        # number_of_pages = pdf.getNumPages()
     # print("metadata: ", info)
     # info.author, info.creator, nfo.producer, info.subject, info.title
-    return info
+    return info, error
 
 
 def identify_tokens(text):
@@ -119,21 +127,22 @@ columns = ['filename', 'title', 'author', 'date', 'abstract', 'keywords', 'text'
 dataframe = pd.DataFrame(columns=columns)
 
 i = 0
+error = 0
 error_title = []
 error_author = []
 error_text = []
 for filename in files:
-    try:
-        info = get_info(path + filename)  # get metadata (e.g. title, author, etc) of pdf with PdfFileReader
-    except:
-        info.title = None
-        info.author = None
+    # Get metadata (e.g. title, author, etc) of pdf with PdfFileReader
+    info, error = get_info(path + filename)
 
-    text = parser.from_file(path + filename)  # parse the text of the pdf with Tika package function
+    # Parse the text of the pdf with Tika package function
+    text = parser.from_file(path + filename)
     text = identify_tokens(text["content"].lower())  # convert raw text in a list of words
+
     # Remove stop words (insignificant words)
     stops = set(stopwords.words("english"))
     text = remove_stops(text)  # remove stop words
+
     # Cut the raw text in abstract - keywords - text (MicroTAS format!)
     text, error = cut_sections(text, format="MicroTAS")
     if error != 0:
@@ -141,6 +150,7 @@ for filename in files:
     # Stemming
     text[0] = stem_list(text[0])  # stemming of the abstract
     text[2] = stem_list(text[2])  # stemming of the text
+
     # Exception handling
     try:
         title = info.title.lower()
@@ -151,7 +161,7 @@ for filename in files:
         author = info.author.lower()
     except:
         error_author.append(filename)
-        title = None
+        author = None
 
     new_entry = {"filename": filename, "title": title, "author": author, "date": date,
                  "abstract": text[0], "keywords": text[1], "text": text[2]}
