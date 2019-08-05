@@ -1,0 +1,13 @@
+Extraction of data from C:/Users/nicol/Desktop/MicroTAS/MicroTAS2014/PDFs/Papers/
+
+Number of incorrect author data : 0 out of 867 files 0.0%
+Number of incorrect title data : 0 out of 867 files 0.0%
+Number of incorrect text data : 2 out of 867 files 0.2306805074971165%
+
+
+Incorrect author files are : 
+
+Incorrect title files are : 
+
+Incorrect text files are : 
+594_1030.PDF; 694_0284.PDF; 

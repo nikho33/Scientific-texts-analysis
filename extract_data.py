@@ -33,7 +33,7 @@ from nltk.corpus import stopwords
 print("Hello here")
 # print("Hello ", spark.sparkContext.appName)
 
-date = 201 #2012
+date = 2015
 if date == 2009:
     path = "C:/Users/nicol/Desktop/MicroTAS/MicroTAS2009/Pdf/"
 elif date == 2010:

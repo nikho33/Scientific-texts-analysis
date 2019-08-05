@@ -1,0 +1,13 @@
+Extraction of data from C:/Users/nicol/Desktop/MicroTAS/MicroTAS2009/Pdf/
+
+Number of incorrect author data : 1 out of 666 files 0.15015015015015015%
+Number of incorrect title data : 11 out of 666 files 1.6516516516516515%
+Number of incorrect text data : 14 out of 666 files 2.1021021021021022%
+
+
+Incorrect author files are : 
+293-T4C.pdf; 
+Incorrect title files are : 
+116-M3E.pdf; 155-M27F.pdf; 170-M42F.pdf; 190-M62F.pdf; 235-T4A.pdf; 440-3A1-2.pdf; 478-W28A.pdf; 483-W33A.pdf; 503-W12B.pdf; 509-W2C.pdf; 637-W77F.pdf; 
+Incorrect text files are : 
+013-M1A.pdf; 121-M8E.pdf; 131-M3F.pdf; 247-T16A.pdf; 298-T9C.pdf; 323-T18D.pdf; 330-T1E.pdf; 375-T30F.pdf; 378-T33F.pdf; 415-T70F.pdf; 423-T78F.pdf; 530-W7D.pdf; 580-W20F.pdf; 590-W30F.pdf; 
