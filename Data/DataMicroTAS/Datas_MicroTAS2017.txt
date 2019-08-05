@@ -1,0 +1,13 @@
+Extraction of data from C:/Users/nicol/Desktop/MicroTAS/MicroTAS2017/PDFs/Papers/
+
+Number of incorrect author data : 0 out of 805 files 0.0%
+Number of incorrect title data : 0 out of 805 files 0.0%
+Number of incorrect text data : 6 out of 805 files 0.7453416149068323%
+
+
+Incorrect author files are : 
+
+Incorrect title files are : 
+
+Incorrect text files are : 
+PAGE0101.pdf; PAGE0340.pdf; PAGE1039.pdf; PAGE1185.pdf; PAGE1241.pdf; PAGE1299.pdf; 
