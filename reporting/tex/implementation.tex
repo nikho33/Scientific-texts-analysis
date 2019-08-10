@@ -1,0 +1,28 @@
+%\chapter{Implementation}
+
+The main source of machine-interpretable data for the materials research community has come from structured property databases. Beyond property values, publications contain valuable knowledge regarding the connections and relationships between data items as interpreted by the authors. To improve the identification and use of this knowledge, several studies have focused on the retrieval of information from scientific literature using supervised natural language processing3–10, which requires large hand-labelled datasets for training.
+ 
+\section{Data extraction}
+
+\subsection{Sources}
+\subsection{Converting pdf to dataframe}
+
+\section{Text transformation}
+The texts need some transformation to be relevant for algorithms or models applied afterwards. Typically models sensitive to term appearance frequency to determine importance of the words will be biased by recurrent term like in English: \textit{I, and, or \ldots} that do not carry much meaning.
+\newline
+A transformer is an abstraction that includes feature transformers and learned models: \ie A transformer implements a method, which converts one dataframe into another, generally by appending a new column.  
+
+\subsection{Tokenization}
+Tokenization is the process of taking the text (such a sentence) and breaking it into individual terms (usually words).
+
+\subsection{Stop words}
+Stop words process takes as input a sequence of strings (\eg the output of the tokenization) and drops all the stop words.
+\newline
+Stop words are words which should be excluded because the words appears frequently and carry as much meaning. 
+
+\subsection{Stemming}
+
+\section{Algorithm}
+\subsection{Latent Dirichlet Algorithm}
+\subsection{Others}
+

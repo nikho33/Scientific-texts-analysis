@@ -1,5 +1,33 @@
 \documentclass[]{report}
 
+
+\newcommand{\reportTitle}{Scientific texts analysis and classification
+	by using machine learning methods}
+\newcommand{\reportSubtitle}{Formation project report}
+\newcommand{\reportAuthor}{Nicolas LAFITTE}
+% Title Page
+\title{\reportTitle}
+\author{\reportAuthor}
+
+\usepackage{hyperref}
+	
+% PDF Properties
+\hypersetup{
+	pdftitle={\reportTitle},
+	pdfsubject={\reportSubtitle - \reportTitle},
+	pdfauthor={\reportAuthor},
+	pdfdisplaydoctitle=true,
+	bookmarksnumbered=true,     
+	bookmarksopen=true,         
+	bookmarksopenlevel=1,       
+	colorlinks = true,   
+	citecolor = black,
+	filecolor = black,
+	linkcolor = black,
+	urlcolor = blue,
+	pdfstartview = FitH, 
+}
+
 % new commands for standards words or codes
 \newcommand{\chap}{Chapter}
 \newcommand{\sect}{Section}
@@ -7,13 +35,12 @@
 \newcommand{\chaps}{Chapters}
 \newcommand{\sects}{Sections}
 \newcommand{\figs}{Figures}
-
-% Title Page
-\title{Scientific texts analysis and classification}
-\author{Nicolas LAFITTE}
+\newcommand{\eg}{e.g.}
+\newcommand{\ie}{ie.}
 
 
 \begin{document}
+
 \maketitle
 
 \input{tex/abstract}
@@ -21,8 +48,8 @@
 \tableofcontents
 
 \chapter{Introduction}
-\chapter{Methods}
-\input{tex/methods}
+\chapter{Implementation}
+\input{tex/implementation}
 \chapter{Results}
 \chapter{Conclusion and perspectives}
 \chapter{Annexes}
