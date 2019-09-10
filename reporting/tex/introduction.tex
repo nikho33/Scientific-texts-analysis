@@ -1,7 +1,7 @@
 %\chapter{Introduction}
 \label{chap_intro}
 
-Disclaimer: This report is widely inspired by the review of Allahyari et al., \textit{A Brief Survey of Text Mining: Classification, Clustering and Extraction Techniques} \citep{Allahyari2017}.
+\textit{Disclaimer: This report is widely inspired by the review of Allahyari et al., A Brief Survey of Text Mining: Classification, Clustering and Extraction Techniques} \citep{Allahyari2017}.
 \newline
 \newline
 In a very recent paper \citep{Tshitoyan2019}, researchers at Lawrence Berkeley National Laboratory have developed an artificial intelligence (AI) that paves the way to predict discoveries in science.
@@ -78,11 +78,32 @@ Thus, a topic is akin to a cluster and the membership of a document to a topic i
 As aforementioned in the beginning of the introduction, supervised learning methods are machine learning techniques pertaining to infer a function or learn a classifier from the training data in order to perform predictions on unseen data. 
 There is a broad range of supervised methods such as nearest neighbor classifiers, decision trees, rule-based classifiers and probabilistic classifiers.
 
+\subsection{Some current applications}
+Text processing 
+\subsubsection{Natural Language Processing (NLP)}
+\subsubsection{Text summarization}
+\subsubsection{Text streams and social media mining}
+\subsubsection{Opinion mining and sentiment analysis}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Selected approach and set of documents}
+\section{Current work objective, database and approach}
+
+\subsection{Objective}
+The work targets to study scientific papers specialized in microfluidics and extract hot topics. 
+
+On the one hand, amount of accessible texts has been increasing rapidly, and potentially contain a great wealth of knowledge.
+On the other hand, analyzing huge amounts of textual data requires a tremendous amount of work in reading all of the text and organizing the content. Thus, the increase in accessible textual data has caused an in- formation flood in spite of hope of becoming knowledgeable about various topics.
+
+
 
 \subsection{Text database}
-The work targets to study scientific papers specialized in microfluidics. First samples are from a conference proceedings specialized in microfluidics: MicroTAS or \textmu TAS (\appendice~\ref{Appendice_MicroTASpaper}).
+First samples are from a conference proceedings specialized in microfluidics: MicroTAS or \textmu TAS (\appendice~\ref{Appendice_MicroTASpaper}, \url{http://microtas2019.org/}).
+As undermentioned in following \chap, the text pre-processing is complex because of the text encoding of the .pdf files first and the heterogeneous paragraph sectioning by the authors. 
+
+The second step is to analyze more microfluidics papers for scientific journals (\ie  \href{https://www.rsc.org/journals-books-databases/about-journals/lab-on-a-chip/}{RSC Lab-on-a-Chip}, \href{https://link.springer.com/journal/10404}{Springer Microfluidics and Nanofluidics} \ldots), and microfludics applications journals (\ie\textcolor{red}{à remplir} \ldots)
+\newline
+
+In both cases,  the access to the full text is quite expensive. However, in the case of journals, title, keywords and abstract are accessible on the internet and potentially in semi-structured files such as XML.
 
 \subsection{Selected approach}
 Probabilistic Methods for Text Mining: 
