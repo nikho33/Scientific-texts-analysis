@@ -1,9 +1,10 @@
 %\chapter{Introduction}
+\label{chap_intro}
 
-Disclaimer: This report is widely inspired by the review of Allahyari et al., \textit{A Brief Survey of Text Mining: Classification, Clustering and Extraction Techniques} \cite{Allahyari2017}.
+Disclaimer: This report is widely inspired by the review of Allahyari et al., \textit{A Brief Survey of Text Mining: Classification, Clustering and Extraction Techniques} \citep{Allahyari2017}.
 \newline
 \newline
-In a very recent paper \cite{Tshitoyan2019}, researchers at Lawrence Berkeley National Laboratory have developed an artificial intelligence (AI) that paves the way to predict discoveries in science.
+In a very recent paper \citep{Tshitoyan2019}, researchers at Lawrence Berkeley National Laboratory have developed an artificial intelligence (AI) that paves the way to predict discoveries in science.
 %\To spot what scientists had missed, all the AI had to do was read millions of previously published scientific papers. 
 The scientists gathered 3.3 million articles on materials science from 1,000 different journals published between 1922 and 2018, and trained the renowned Word2vec algorithm in order to build statistical connections between words that are in the same context (\cf words embedding). 
 %The renowned algorithm Word2vec was trained with abstracts published up to the year 2008, Word2vec was able to predict materials that appear in later from 2008 to 2018.
@@ -19,10 +20,11 @@ Each of these models ranked materials according to their similarity to the word 
 %\The amount of text that is generated every day is increasing dramatically. This tremendous volume of mostly unstructured text cannot be simply processed and perceived by computers.
 %\The main source of machine-interpretable data for the materials research community has come from structured property databases. Beyond property values, publications contain valuable knowledge regarding the connections and relationships between data items as interpreted by the authors. To improve the identification and use of this knowledge, several studies have focused on the retrieval of information from scientific literature using supervised natural language processing, which requires large hand-labelled datasets for training.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[]
 	\centering
 	\includegraphics[width=1.0\textwidth]{imgs/Tshitoyan2019_Material_Predictions_01}
-	\caption{Prediction of new thermoelectric materials based on 3.3 million scientific articles from 1,000 different journals published between 1922 and 2018 \cite{Tshitoyan2019}. 
+	\caption{Prediction of new thermoelectric materials based on 3.3 million scientific articles from 1,000 different journals published between 1922 and 2018 \citep{Tshitoyan2019}. 
 		\newline
 		\textbf{a.} Ranking table of thermoelectric materials. Materials with a check symbol are found in the context with thermoelectric terms (\ie ‘ZT’, ‘zT’, ‘seebeck’, ‘thermoelectric’, ‘thermoelectrics’, ‘thermoelectrical’, ‘thermoelectricity’, ‘thermoelectrically’ or ‘thermopower’). However materials with a interrogation point are not explicitly studied as thermoelectric but are \doq mathematically\deq{} close and potential predictions that can be tested in the future.
 		\newline
@@ -32,24 +34,56 @@ Each of these models ranked materials according to their similarity to the word 
 	}
 	\label{MaterialPrediction01}
 \end{figure}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[]
 	\centering
 	\includegraphics[width=0.6\textwidth]{imgs/Tshitoyan2019_Material_Predictions_02}
-	\caption{Predictions of thermoelectric materials based on previously published papers  \cite{Tshitoyan2019}.
+	\caption{Predictions of thermoelectric materials based on previously published papers  \citep{Tshitoyan2019}.
 		\newline
 		For example, predictions for 2001 are performed using abstracts from 2000 and earlier, and the grey lines plot the cumulative percentage of predicted materials subsequently reported as thermoelectrics in the years following their predictions.
 		The results are averaged (red curve) and are 8 times more likely to have been studied as thermoelectrics within the next five years as compared to a randomly chosen unstudied material from our corpus at that time (blue curve) or three times more likely than a random material with a non-zero band gap (green curve).
 	}
 	\label{MaterialPrediction02}
 \end{figure}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[]
 	\centering
-	\includegraphics[width=1.2\textwidth]{imgs/Tshitoyan2019_Material_Predictions_03}
-	\caption{Same prediction methods as \fig~\ref{MaterialPrediction02}, but with words related to ferroelectric (graph \textbf{a}), photovoltaic (graph \textbf{b}) and topological insulator  (graph \textbf{c}) (Supplementary material of \cite{Tshitoyan2019}). }
+	\includegraphics[width=1.0\textwidth]{imgs/Tshitoyan2019_Material_Predictions_03}
+	\caption{Same prediction methods as \fig~\ref{MaterialPrediction02}, but with words related to ferroelectric (graph \textbf{a}), photovoltaic (graph \textbf{b}) and topological insulator  (graph \textbf{c}). 
+	Supplementary material of \citep{Tshitoyan2019}.}
 	\label{MaterialPrediction03}
 \end{figure}
 
 
 This work is perfect example of the target of the current work, \ie study future research and markets on a specific field that is here microfluidics. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Text mining}
+%\section{Knowledge discovery vs. data mining}
+Text Mining or knowledge discovery from text refers to the process of extracting high quality of information from structured database (i.e. RDBMS), semi-structured (\ie XML and JSON files), or unstructured text resources (\ie .pdf documents).
+It widely covers a large set of related topics and algorithms for analyzing text, spanning various communities, including information retrieval, natural language processing, data mining, machine learning many application domains web and biomedical sciences.
+\citeauthor{Allahyari2017} describe the notions of knowledge discovery, data mining, information retrieval, information extraction, text summarization or natural language processing in \citep{Allahyari2017}.
+
+\subsection{Existing approaches}
+\subsubsection{Unsupervised learning methods}
+Unsupervised learning methods try to find hidden structure out of unlabeled data. Clustering and topic modeling are the two commonly used unsupervised learning algorithms used in the context of text data. 
+\newline
+Clustering is the task of segmenting a collection of documents into partitions where documents in the same group (cluster) are more similar to each other than those in other clusters. 
+\newline
+In topic modeling a probabilistic model is used to determine a soft clustering, in which every document has a probability distribution over all the clusters as opposed to hard clustering of documents. 
+In topic models each topic can be represented as a probability distributions over words and each documents is expressed as probability distribution over topics. 
+Thus, a topic is akin to a cluster and the membership of a document to a topic is probabilistic
+
+\subsubsection{Supervised learning methods}
+As aforementioned in the beginning of the introduction, supervised learning methods are machine learning techniques pertaining to infer a function or learn a classifier from the training data in order to perform predictions on unseen data. 
+There is a broad range of supervised methods such as nearest neighbor classifiers, decision trees, rule-based classifiers and probabilistic classifiers.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Selected approach and set of documents}
+
+\subsection{Text database}
+The work targets to study scientific papers specialized in microfluidics. First samples are from a conference proceedings specialized in microfluidics: MicroTAS or \textmu TAS (\appendice~\ref{Appendice_MicroTASpaper}).
+
+\subsection{Selected approach}
+Probabilistic Methods for Text Mining: 
+There are various probabilistic techniques including unsupervised topic models such as probabilistic Latent semantic analysis (pLSA) and Latent Dirichlet Allocation (LDA), and supervised learning methods such as conditional random fields that can be used regularly in the context of text mining.
