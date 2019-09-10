@@ -12,6 +12,9 @@
 \usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage{fixltx2e}
+\usepackage{natbib}
+\usepackage{textgreek}
+\usepackage{pdfpages}
 	
 % PDF Properties
 \hypersetup{
@@ -61,9 +64,22 @@
 \input{tex/implementation}
 \chapter{Results}
 \chapter{Conclusion and perspectives}
-\chapter{Annexes}
 
-\bibliographystyle{apalike} % plain
+
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliographystyle{plainnat} % plain
 \bibliography{biblio}
+
+%\addcontentsline{toc}{chapter}{Annexes}
+%\chapter*{Annexes}
+\appendix
+\chapter*{Appendices}
+\addcontentsline{toc}{chapter}{Appendices}
+\renewcommand{\thesection}{\Alph{section}}
+\input{tex/appendix_MicroTASpaper}
+
+\section{Text processing into semi-structured file}
+
+
 
 \end{document}          
