@@ -33,27 +33,27 @@ from nltk.corpus import stopwords
 print("Hello here")
 # print("Hello ", spark.sparkContext.appName)
 
-date = 2015
+date = 20152
 if date == 2009:
-    path = "C:/Users/nicol/Desktop/MicroTAS/MicroTAS2009/Pdf/"
+    path = "C:/Users/nicol/Documents/Scientific papers/Conferences Proceedings/MicroTAS2009/Pdf/"
 elif date == 2010:
-    path = "C:/Users/nicol/Desktop/MicroTAS/MicroTAS2010/PDFs/Papers/"
+    path = "C:/Users/nicol/Documents/Scientific papers/Conferences Proceedings/MicroTAS2010/PDFs/Papers/"
 elif date == 2011:
-    path = "C:/Users/nicol/Desktop/MicroTAS/MicroTAS2011/PDFs/Papers/"
+    path = "C:/Users/nicol/Documents/Scientific papers/Conferences Proceedings/MicroTAS2011/PDFs/Papers/"
 elif date == 2012:
-    path = "C:/Users/nicol/Desktop/MicroTAS/MicroTAS2012/pdf/"
+    path = "C:/Users/nicol/Documents/Scientific papers/Conferences Proceedings/MicroTAS2012/pdf/"
 elif date == 2013:
-    path = "C:/Users/nicol/Desktop/MicroTAS/MicroTAS2013/PDFs/Papers/"
+    path = "C:/Users/nicol/Documents/Scientific papers/Conferences Proceedings/MicroTAS2013/PDFs/Papers/"
 elif date == 2014:
-    path = "C:/Users/nicol/Desktop/MicroTAS/MicroTAS2014/PDFs/Papers/"
+    path = "C:/Users/nicol/Documents/Scientific papers/Conferences Proceedings/MicroTAS2014/PDFs/Papers/"
 elif date == 2015:
-    path = "C:/Users/nicol/Desktop/MicroTAS/MicroTAS2015/PDFs/Papers/"
+    path = "C:/Users/nicol/Documents/Scientific papers/Conferences Proceedings/MicroTAS2015/PDFs/Papers/"
 elif date == 2016:
-    path = "C:/Users/nicol/Desktop/MicroTAS/MicroTAS2016/PDFs/Papers/"
+    path = "C:/Users/nicol/Documents/Scientific papers/Conferences Proceedings/MicroTAS2016/PDFs/Papers/"
 elif date == 2017:
-    path = "C:/Users/nicol/Desktop/MicroTAS/MicroTAS2017/PDFs/Papers/"
+    path = "C:/Users/nicol/Documents/Scientific papers/Conferences Proceedings/MicroTAS2017/PDFs/Papers/"
 elif date == 2018:
-    path = "C:/Users/nicol/Desktop/MicroTAS/MicroTAS2018/PDFs/Papers/"
+    path = "C:/Users/nicol/Documents/Scientific papers/Conferences Proceedings/MicroTAS2018/PDFs/Papers/"
 else:
     path = "./Data/MiniMicroTAS/"
 
@@ -122,6 +122,63 @@ def cut_sections(my_list, format="MicroTAS"):
     else:
         return [my_list[:], [], my_list[:]], -1
 
+def cut_sections(my_list, format="MicroTAS"):
+    if format == "MicroTAS":
+        ind_abstract = 0
+        for word in my_list:
+            if word == "abstract":
+                break
+            ind_abstract += 1
+        ind_keywords = ind_abstract
+        for word in my_list[ind_abstract:]:
+            if word == "keywords" or word == "keyword":
+                break
+            ind_keywords += 1
+        ind_text = ind_keywords
+        for word in my_list[ind_keywords:]:
+            if word == "introduction":
+                break
+            ind_text += 1
+        # print(ind_abstract, ind_keywords, ind_text)
+        # special case when original file is not organized like expected (i.e. with section words abstract, keywords, introduction)
+        if ind_abstract == len(my_list):
+            print("warning : no abstract found ! ")
+            return [my_list[:], [], my_list[:]], -1
+        return [my_list[ind_abstract + 1:ind_keywords], my_list[ind_keywords + 1:ind_text], my_list[ind_text + 1:]], 0
+    else:
+        return [my_list[:], [], my_list[:]], -1
+
+def cut_raw_text_into_sections(text, format="MicroTAS"):
+    if format == "MicroTAS" or format == "microtas" or format == "microTAS":
+        ind_abstract = 0
+        for word in text:
+            if word == "abstract":
+                break
+            ind_abstract += 1
+        ind_keywords = ind_abstract
+        for word in text[ind_abstract:]:
+            if word == "keywords" or word == "keyword":
+                break
+            ind_keywords += 1
+        ind_text = ind_keywords
+        for word in text[ind_keywords:]:
+            if word == "introduction":
+                break
+            ind_text += 1
+        ind_references = ind_text
+        for word in text[ind_references:]:
+            if word == "references" or word == "reference":
+                break
+            ind_text += 1
+        print(ind_abstract, ind_keywords, ind_text, ind_references)
+        # special case when original file is not organized like expected (i.e. with section words abstract, keywords, introduction)
+        if ind_abstract == len(text):
+            print("warning : no abstract found ! ")
+            return [text[:], [], text[:]], -1
+        return [text[ind_abstract + 1:ind_keywords], text[ind_keywords + 1:ind_text], text[ind_text + 1:ind_references], text[ind_references + 1:]], 0
+    else:
+        return [text[:], [], text[:]], -1
+
 
 columns = ['filename', 'title', 'author', 'date', 'abstract', 'keywords', 'text']
 dataframe = pd.DataFrame(columns=columns)
@@ -131,25 +188,33 @@ error = 0
 error_title = []
 error_author = []
 error_text = []
+#pipeline = "simple"
 for filename in files:
     # Get metadata (e.g. title, author, etc) of pdf with PdfFileReader
     info, error = get_info(path + filename)
 
     # Parse the text of the pdf with Tika package function
     text = parser.from_file(path + filename)
-    text = identify_tokens(text["content"].lower())  # convert raw text in a list of words
+    #text = identify_tokens(text["content"].lower())  # convert raw text in a list of words
+    text = text["content"].lower()
 
     # Remove stop words (insignificant words)
-    stops = set(stopwords.words("english"))
-    text = remove_stops(text)  # remove stop words
+    #stops = set(stopwords.words("english"))
+    #text = remove_stops(text)  # remove stop words
 
     # Cut the raw text in abstract - keywords - text (MicroTAS format!)
-    text, error = cut_sections(text, format="MicroTAS")
+    # text, error = cut_sections(text, format="MicroTAS")
+    print(text)
+    text, error = cut_raw_text_into_sections(text, format="MicroTAS")
+
+    print(len(text))
+    print(text[len(text)-1])
+
     if error != 0:
         error_text.append(filename)
     # Stemming
-    text[0] = stem_list(text[0])  # stemming of the abstract
-    text[2] = stem_list(text[2])  # stemming of the text
+    #text[0] = stem_list(text[0])  # stemming of the abstract
+    #text[2] = stem_list(text[2])  # stemming of the text
 
     # Exception handling
     try:
@@ -193,6 +258,7 @@ output_log = output_log + "\nIncorrect text files are : \n"
 for f in error_text:
     output_log = output_log + f + separator
 # print(dataframe)
+path = "C:/Users/nicol/Documents/Python scripts/Scientific-texts-analysis/Data/DataMicroTAS/"
 dataframe.to_csv(path + output_filename + ".csv", index=False)
 f = open(path + output_filename + ".txt", "w+")
 f.write(output_log)
