@@ -1,4 +1,4 @@
-Extraction of data from C:/Users/nicol/Desktop/MicroTAS/MicroTAS2012/pdf/
+Extraction of data from C:/Users/nicol/Documents/Scientific papers/Conferences Proceedings/MicroTAS2012/pdf/
 
 Number of incorrect author data : 674 out of 674 files 100.0%
 Number of incorrect title data : 674 out of 674 files 100.0%
